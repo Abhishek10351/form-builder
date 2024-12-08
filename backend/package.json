@@ -1,0 +1,38 @@
+{
+    "name": "form-builder-backend",
+    "version": "0.1.0",
+    "description": "The backend part for the form builder. It uses SQL and ExpressJs",
+    "main": "index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc --build ",
+        "start": "npm run build && node dist/index.js",
+        "dev": "concurrently \"npx tsc -w\" \"nodemon dist/index.js\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Abhishek10351/form-builder.git"
+    },
+    "author": "Abhishek Kashyap",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Abhishek10351/form-builder/issues"
+    },
+    "homepage": "https://github.com/Abhishek10351/form-builder#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "pg": "^8.13.1"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/node": "^22.10.1",
+        "@types/pg": "^8.11.10",
+        "concurrently": "^9.1.0",
+        "nodemon": "^3.1.7",
+        "typescript": "^5.7.2"
+    },
+    "type": "commonjs"
+}

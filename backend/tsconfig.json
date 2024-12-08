@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        /* Language and Environment */
+        // "target": "es2016"
+
+        /* Modules */
+        "module": "CommonJS",
+
+        /* Emit */
+        "outDir": "./dist",
+        "esModuleInterop": true,
+
+        "strict": true,
+        "skipLibCheck": true
+    }
+}

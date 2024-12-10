@@ -1,6 +1,9 @@
 import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
+import { connection } from "./config/db";
+import { readFile } from "fs";
+
 const app = express();
 
 config();
@@ -18,7 +21,20 @@ app.get("/", (req, res) => {
 app.use("/forms", formRouter);
 app.use("/auth", auth);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    await connection.connect();
+    // get file contents
+    const file_path = "./config/db/form-builder.sql";
+    console.log("connected to db");
+    readFile(file_path, "utf-8", async (err, data) => {
+        if (err) {
+            console.log(err);
+            throw new Error("Error reading file");
+        }
+        await connection.query(data);
+        console.log("All tables created");
+    });
+
     console.log(`connected to server: ${PORT}`);
 });
 

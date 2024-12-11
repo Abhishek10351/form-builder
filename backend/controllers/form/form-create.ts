@@ -12,9 +12,10 @@ const generateRandomString = (length: number = 10) => {
 const formCreate = async (req: Request, res: Response) => {
     const { name, description, fields } = req.body;
 
-    // if (!name || !description || !fields) {
-    //     return res.status(400).json({ message: "Invalid request" });
-    // }
+    if (!name || !description || !fields) {
+        return res.status(400).json({ message: "Invalid request" });
+    }
+
     return res.status(201).json({
         message: "Form created successfully",
         id: generateRandomString(),

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { connection } from "../../config/db"; // Assuming you have a db file that exports a pre-connected connection
+import { log } from "console";
 
 const formSubmit = async (req: Request, res: Response) => {
     // the url is /form-submit/:formId
@@ -27,29 +28,42 @@ const formSubmit = async (req: Request, res: Response) => {
             return res.status(404).send("Form not found");
         }
 
-        const form = formResult.rows[0];
-
         const formFieldsQuery = `
             SELECT * FROM form_fields WHERE form_id = $1
         `;
-        const formFieldsValues = [formId];
-        const formFieldsResult = await connection.query(
-            formFieldsQuery,
-            formFieldsValues
-        );
+        const formFieldsResult = await connection.query(formFieldsQuery, [
+            formId,
+        ]);
 
         const formFields = formFieldsResult.rows;
 
-        const formDataQuery = `
-            INSERT INTO form_data (form_id, data)
+        const submissionQuery = `
+            INSERT INTO form_submissions (form_id, email)
             VALUES ($1, $2)
+            RETURNING id
         `;
-        const formDataValues = [formId, formData];
-        await connection.query(formDataQuery, formDataValues);
+        const submissionResult = await connection.query(submissionQuery, [
+            formId,
+            email,
+        ]);
+        const submissionId = submissionResult.rows[0].id;
+
+        for (const field of formFields) {
+            const fieldValue = formData[field.id];
+            const submissionFieldQuery = `
+                INSERT INTO form_submission_fields (submission_id, field_id, value)
+                VALUES ($1, $2, $3)
+            `;
+            await connection.query(submissionFieldQuery, [
+                submissionId,
+                field.id,
+                fieldValue,
+            ]);
+        }
 
         await connection.query("COMMIT");
 
-        return res.status(200).send("Form submitted");
+        return res.status(200).send("Form submitted successfully");
     } catch (error) {
         await connection.query("ROLLBACK");
         return res.status(500).send("Internal server error");

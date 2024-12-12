@@ -19,6 +19,7 @@ const register = async (req: Request, res: Response) => {
     if (userExists.rowCount) {
         return res.status(400).json({ message: "User already exists" });
     }
+
     try {
         const hashedPassword = await password_hash(password);
         await connection.query(

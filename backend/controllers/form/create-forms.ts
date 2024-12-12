@@ -28,11 +28,11 @@ const createForms = async (req: Request, res: Response) => {
     const email = (req as any).user?.email;
 
     if (!email) {
-        return res.status(401).send("Unauthorized");
+        return res.status(401).json({ message: "Unauthorized" });
     }
 
     if (!name || !description || !fields) {
-        return res.status(400).send("Invalid request");
+        return res.status(400).json({ message: "Invalid request" });
     }
 
     const formId = generateRandomString();
@@ -46,7 +46,7 @@ const createForms = async (req: Request, res: Response) => {
             RETURNING id
         `;
         const formValues = [formId, name, description, email];
-        const formResult = await connection.query(formQuery, formValues);
+        await connection.query(formQuery, formValues);
 
         const fieldQueries = fields.map((field: any, index: number) => {
             const fieldQuery = `
@@ -68,16 +68,16 @@ const createForms = async (req: Request, res: Response) => {
         await connection.query("COMMIT");
 
         if (!res.headersSent) {
-            return res
-                .status(201)
-                .send(`Form created successfully with id: ${formId}`);
-        } else {
+            return res.status(201).json({
+                message: "Form created successfully",
+                formId: formId
+            });
         }
     } catch (error) {
         await connection.query("ROLLBACK");
 
         if (!res.headersSent) {
-            return res.status(500).send("Internal server error");
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
 };

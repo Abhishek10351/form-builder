@@ -9,7 +9,9 @@ const login = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).json({ message: "Both email and password are required" });
+        return res
+            .status(400)
+            .json({ message: "Both email and password are required" });
     }
 
     const user = await connection.query(
@@ -21,6 +23,7 @@ const login = async (req: Request, res: Response) => {
     }
 
     const pass_match = await compare_password(password, user.rows[0].password);
+
     if (!pass_match) {
         return res.status(400).json({ message: "Invalid credentials" });
     }

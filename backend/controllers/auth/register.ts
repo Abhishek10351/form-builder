@@ -25,11 +25,12 @@ const register = async (req: Request, res: Response) => {
             `INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`,
             [name, email, hashedPassword]
         );
+        return res
+            .status(201)
+            .json({ message: "User registered successfully" });
     } catch (err) {
         return res.status(500).json({ message: "Internal server error" });
     }
-
-    return res.status(201).json({ message: "User registered successfully" });
 };
 
 export default register;

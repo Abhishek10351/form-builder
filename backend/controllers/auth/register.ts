@@ -19,17 +19,19 @@ const register = async (req: Request, res: Response) => {
     if (userExists.rowCount) {
         return res.status(400).json({ message: "User already exists" });
     }
+
     try {
         const hashedPassword = await password_hash(password);
         await connection.query(
             `INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`,
             [name, email, hashedPassword]
         );
+        return res
+            .status(201)
+            .json({ message: "User registered successfully" });
     } catch (err) {
         return res.status(500).json({ message: "Internal server error" });
     }
-
-    return res.status(201).json({ message: "User registered successfully" });
 };
 
 export default register;

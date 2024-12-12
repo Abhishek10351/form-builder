@@ -1,2 +1,5 @@
-export { default as formCreate } from "./form-create";
-export { default as formPost } from "./form-post";
+export { default as createForm } from "./create-forms";
+export { default as getForm } from "./get-form";
+export { default as listForms } from "./list-forms";
+export { default as submitForm } from "./submit-form";
+export { default as viewSubmissions } from "./view-submissions";

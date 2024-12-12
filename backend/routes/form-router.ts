@@ -1,15 +1,28 @@
 import { Request, Response, Router } from "express";
 
-import { formCreate, formPost } from "../controllers/form";
+import {
+    createForm,
+    getForm,
+    listForms,
+    submitForm,
+} from "../controllers/form";
 
 const router = Router();
 
-router.post("/form-create", (req: Request, res: Response) => {
-    formCreate(req, res);
+router.post("", (req: Request, res: Response) => {
+    createForm(req, res);
 });
 
-router.put("/form-post/:formId", (req: Request, res: Response) => {
-    formPost(req, res);
+router.put("/:formId", (req: Request, res: Response) => {
+    submitForm(req, res);
+});
+
+router.get("/", (req: Request, res: Response) => {
+    listForms(req, res);
+});
+
+router.get("/:formId", (req: Request, res: Response) => {
+    getForm(req, res);
 });
 
 export default router;

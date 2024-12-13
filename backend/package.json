@@ -25,6 +25,8 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
+        "json-2-csv": "^5.5.7",
+        "json2csv": "^6.0.0-alpha.2",
         "jsonwebtoken": "^9.0.2",
         "pg": "^8.13.1"
     },

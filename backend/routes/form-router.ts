@@ -4,7 +4,7 @@ import {
     getForm,
     listForms,
     submitForm,
-    viewSubmissions, viewSubmissionsCsv
+    viewSubmissions, viewSubmissionsCsv, deleteForm
 } from "../controllers/form";
 
 const router = Router();
@@ -36,6 +36,10 @@ router.get("/:formId/submissions", (req: Request, res: Response) => {
 
 router.get("/:formId/submissions/csv", (req: Request, res: Response) => {
     viewSubmissionsCsv(req, res);
+});
+
+router.delete("/:formId", (req: Request, res: Response) => {
+    deleteForm(req, res);
 });
 
 

@@ -18,9 +18,10 @@ CREATE TABLE IF NOT EXISTS form_fields (
     id SERIAL PRIMARY KEY,
     form_id VARCHAR(255) REFERENCES forms(id),
     label VARCHAR(255) NOT NULL,
-    type VARCHAR(50) NOT NULL,
+    type VARCHAR(255) NOT NULL,
     required BOOLEAN DEFAULT FALSE,
-    order_index INT
+    order_index INT,
+    options JSON
 );
 
 CREATE TABLE IF NOT EXISTS form_submissions (

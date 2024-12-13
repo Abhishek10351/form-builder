@@ -50,8 +50,8 @@ const createForms = async (req: Request, res: Response) => {
 
         const fieldQueries = fields.map((field: any, index: number) => {
             const fieldQuery = `
-                INSERT INTO form_fields (form_id, label, type, required, order_index)
-                VALUES ($1, $2, $3, $4, $5)
+                INSERT INTO form_fields (form_id, label, type, required, order_index, options)
+                VALUES ($1, $2, $3, $4, $5, $6)
             `;
             const fieldValues = [
                 formId,
@@ -59,6 +59,7 @@ const createForms = async (req: Request, res: Response) => {
                 field.type,
                 field.required,
                 index,
+                field.options ? JSON.stringify(field.options) : null
             ];
             return connection.query(fieldQuery, fieldValues);
         });

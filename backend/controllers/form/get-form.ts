@@ -26,7 +26,13 @@ const getForm = async (req: Request, res: Response) => {
         const fieldsResult = await connection.query(fieldsQuery, [formId]);
 
         const form = formResult.rows[0];
-        form.fields = fieldsResult.rows;
+
+        form.fields = fieldsResult.rows.map((field) => {
+            return {
+                ...field,
+                options: field.options ? JSON.parse(field.options) : [],
+            };
+        });
 
         return res.status(200).json(form);
     } catch (error) {

@@ -2,7 +2,9 @@ import { Select } from "@chakra-ui/react";
 
 import { Box, Container, VStack, Text } from "@chakra-ui/react";
 
-const DropDown = () => {
+import { DropDownProps } from "@/types/input";
+
+const DropDown = ({ label, placeholder, options, onChange }: DropDownProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -15,13 +17,15 @@ const DropDown = () => {
                         w="100%"
                     >
                         <Text>
-                            <strong>DropDown:</strong>
+                            <strong>{label}</strong>
                         </Text>
-                            <Select placeholder="Select option">
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </Select>
+                        <Select placeholder={placeholder || options[0].value}>
+                            {options.map((optionval, index) => (
+                                <option key={index} value={optionval.value}>
+                                    {optionval.label}
+                                </option>
+                            ))}
+                        </Select>
                     </Box>
                 </VStack>
             </Box>

@@ -1,7 +1,9 @@
 "use client";
 import { Input, Box, Container, VStack, Text } from "@chakra-ui/react";
 
-const TextInput = () => {
+import { TextInputProps } from "@/types/input";
+
+const TextInput = ({ label, placeholder, value, onChange }: TextInputProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -14,9 +16,14 @@ const TextInput = () => {
                         w="100%"
                     >
                         <Text>
-                            <strong>Email:</strong>
+                            <strong>{label}:</strong>
                         </Text>
-                        <Input type="text" placeholder="Email" />
+                        <Input
+                            type="text"
+                            placeholder={placeholder}
+                            value={value}
+                            onChange={onChange}
+                        />
                     </Box>
                 </VStack>
             </Box>

@@ -2,7 +2,9 @@ import { Checkbox } from "@chakra-ui/react";
 
 import { Box, Container, VStack, Text } from "@chakra-ui/react";
 
-const CheckBox = () => {
+import { CheckBoxProps } from "@/types/input";
+
+const CheckBox = ({ label, value, onChange }: CheckBoxProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -15,7 +17,7 @@ const CheckBox = () => {
                         w="100%"
                     >
                         <Text>
-                            <strong>Checkbox:</strong>
+                            <strong>{label}</strong>
                         </Text>
                         <Checkbox value="ok">OK</Checkbox>
                     </Box>

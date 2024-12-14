@@ -5,11 +5,16 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
+    Box,
+    Container,
+    VStack,
+    Text
 } from "@chakra-ui/react";
 
-import { Box, Container, VStack, Text } from "@chakra-ui/react";
+import { NumberInputProps } from "@/types/input";
 
-const NumInput = () => {
+
+const NumInput = ({ label, placeholder, value, onChange }: NumberInputProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -22,10 +27,10 @@ const NumInput = () => {
                         w="100%"
                     >
                         <Text>
-                            <strong>Number:</strong>
+                            <strong>{label}:</strong>
                         </Text>
                         <NumberInput>
-                            <NumberInputField />
+                            <NumberInputField placeholder={placeholder} value={value} onChange={onChange} />
                             <NumberInputStepper>
                                 <NumberIncrementStepper />
                                 <NumberDecrementStepper />

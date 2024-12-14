@@ -1,7 +1,10 @@
 "use client";
 import { Input, Box, Container, VStack, Text } from "@chakra-ui/react";
 
-const TextInput = () => {
+import { DateInputProps } from "@/types/input";
+
+
+const DateInput = ({ label, placeholder, value, onChange }: DateInputProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -14,9 +17,14 @@ const TextInput = () => {
                         w="100%"
                     >
                         <Text>
-                            <strong>Date:</strong>
+                            <strong>{label}:</strong>
                         </Text>
-                        <Input type="date" />
+                        <Input
+                            type="date"
+                            placeholder={placeholder}
+                            value={value}
+                            onChange={onChange}
+                        />
                     </Box>
                 </VStack>
             </Box>
@@ -24,4 +32,4 @@ const TextInput = () => {
     );
 };
 
-export default TextInput;
+export default DateInput;

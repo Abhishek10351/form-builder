@@ -1,8 +1,5 @@
 "use client";
 import {
-    Box,
-    Text,
-    Input,
     Editable,
     EditablePreview,
     EditableInput,
@@ -11,15 +8,16 @@ import { useState, useEffect } from "react";
 
 interface TextInputProps {
     initialValue?: string;
-    onChange: (value: string) => void;
+    onChange?: (value: string) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({ initialValue, onChange }) => {
-    const [inputValue, setInputValue] = useState(initialValue || "");
+    const [inputValue, setInputValue] = useState(initialValue || "..");
+    const [text, useText] = useState("...");
 
     useEffect(() => {
-        onChange(inputValue);
-    }, [inputValue, onChange]);
+        useText(inputValue);
+    }, [inputValue, useText]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);

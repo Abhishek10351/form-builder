@@ -19,10 +19,13 @@ const DropDown = ({ label, placeholder, options, onChange }: DropDownProps) => {
                         <Text>
                             <strong>{label}</strong>
                         </Text>
-                        <Select placeholder={placeholder || options[0].value}>
+                        <Select
+                            placeholder={placeholder || "Select an option"}
+                            onChange={onChange}
+                        >
                             {options.map((optionval, index) => (
-                                <option key={index} value={optionval.value}>
-                                    {optionval.label}
+                                <option key={index} value={optionval}>
+                                    {optionval}
                                 </option>
                             ))}
                         </Select>

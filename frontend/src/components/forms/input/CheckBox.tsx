@@ -19,7 +19,7 @@ const CheckBox = ({ label, value, onChange }: CheckBoxProps) => {
                         <Text>
                             <strong>{label}</strong>
                         </Text>
-                        <Checkbox value="ok">OK</Checkbox>
+                        <Checkbox value="ok" onChange={onChange}>OK</Checkbox>
                     </Box>
                 </VStack>
             </Box>

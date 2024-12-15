@@ -3,7 +3,6 @@ import { Input, Box, Container, VStack, Text } from "@chakra-ui/react";
 
 import { DateInputProps } from "@/types/input";
 
-
 const DateInput = ({ label, placeholder, value, onChange }: DateInputProps) => {
     return (
         <Container>

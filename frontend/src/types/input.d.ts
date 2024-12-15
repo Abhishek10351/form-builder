@@ -1,53 +1,39 @@
-interface TextInputProps {
+export interface TextInputProps {
     label: string;
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface NumberInputProps {
+export interface NumberInputProps {
     label: string;
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-interface DateInputProps {
+export interface DateInputProps {
     label: string;
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface DropDownProps {
+export interface DropDownProps {
     label: string;
     placeholder: string;
     value: string;
-    options: {
-        label: string;
-        value: string;
-    }[];
-
+    options: string[];
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-interface RadioButtonProps {
+export interface RadioButtonProps {
     label: string;
-    placeholder: string;
     value: string;
-    options: {
-        label: string;
-        value: string;
-    }[];
-
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    options: string[];
+    onChange: (e: string) => void;
 }
 
-interface CheckButtonProps {
+export interface CheckBoxProps {
     label: string;
     value: string;
-    options: {
-        label: string;
-        value: string;
-    }[];
-
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

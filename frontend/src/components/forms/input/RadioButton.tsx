@@ -3,7 +3,11 @@ import { Container, Box, VStack, Text } from "@chakra-ui/react";
 
 import { RadioButtonProps } from "@/types/input";
 
-const RadioButton = ({ label, options, onChange }: RadioButtonProps) => {
+const lol = (e) => {
+    console.log(e, "lmfao");
+};
+
+const RadioButton = ({ label, options, value, onChange }: RadioButtonProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -18,12 +22,12 @@ const RadioButton = ({ label, options, onChange }: RadioButtonProps) => {
                         <Text>
                             <strong>{label}</strong>
                         </Text>
-                        <RadioGroup>
-                            {
-                                options.map((option, index) => (
-                                    <Radio key={index} value={option.value}>{option.label}</Radio>
-                                ))
-                            }
+                        <RadioGroup onChange={onChange} value={value}>
+                            {options.map((option, index) => (
+                                <Radio key={index} value={option}>
+                                    {option}
+                                </Radio>
+                            ))}
                         </RadioGroup>
                     </Box>
                 </VStack>

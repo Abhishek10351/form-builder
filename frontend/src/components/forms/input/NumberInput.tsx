@@ -30,10 +30,10 @@ const NumInput = ({ label, placeholder, value, onChange }: NumberInputProps) => 
                             <strong>{label}:</strong>
                         </Text>
                         <NumberInput>
-                            <NumberInputField placeholder={placeholder} value={value} onChange={onChange} />
+                            <NumberInputField placeholder={placeholder} value={value} onChange={onChange}/>
                             <NumberInputStepper>
-                                <NumberIncrementStepper />
-                                <NumberDecrementStepper />
+                                {/* <NumberIncrementStepper /> */}
+                                {/* <NumberDecrementStepper /> */}
                             </NumberInputStepper>
                         </NumberInput>
                     </Box>

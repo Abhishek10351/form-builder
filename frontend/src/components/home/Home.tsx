@@ -9,7 +9,6 @@ import {
     Button,
     Image,
     Stack,
-    useColorMode,
     useColorModeValue,
     Link,
     Icon,
@@ -18,7 +17,6 @@ import {
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
 const HomePage = () => {
-    const { colorMode } = useColorMode();
     const bgColor = useColorModeValue("gray.50", "gray.800");
     const textColor = useColorModeValue("gray.700", "gray.200");
 
@@ -45,7 +43,7 @@ const HomePage = () => {
             <SimpleGrid columns={[1, null, 2]} spacing={10} mt={10}>
                 <Box>
                     <Image
-                        src="https://placeholder.co/100" // Replace with your image path
+                        src="https://placeholder.co/100" 
                         alt="Form Builder Feature 1"
                         borderRadius="md"
                     />
@@ -59,7 +57,7 @@ const HomePage = () => {
                 </Box>
                 <Box>
                     <Image
-                        src="https://placeholder.co/100" 
+                        src="https://placeholder.co/100"
                         alt="Form Builder Feature 2"
                         borderRadius="md"
                     />

@@ -2,10 +2,7 @@ import { Radio, RadioGroup } from "@chakra-ui/react";
 import { Container, Box, VStack, Text } from "@chakra-ui/react";
 
 import { RadioButtonProps } from "@/types/input";
-
-const lol = (e) => {
-    console.log(e, "lmfao");
-};
+ ;
 
 const RadioButton = ({ label, options, value, onChange }: RadioButtonProps) => {
     return (

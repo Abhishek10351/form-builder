@@ -40,9 +40,8 @@ const Register = () => {
             });
 
             setSuccess(true);
-        } catch (error: any) {
-            console.log(error);
-            setError(error.response?.data.message || "Something went wrong");
+        } catch (error) {
+            setError((error as any).response?.data.message || "Something went wrong");
         } finally {
             setLoading(false);
         }

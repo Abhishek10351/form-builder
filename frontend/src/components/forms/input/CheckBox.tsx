@@ -4,7 +4,7 @@ import { Box, Container, VStack, Text } from "@chakra-ui/react";
 
 import { CheckBoxProps } from "@/types/input";
 
-const CheckBox = ({ label, value, onChange }: CheckBoxProps) => {
+const CheckBox = ({ label, onChange }: CheckBoxProps) => {
     return (
         <Container>
             <Box p={4}>
@@ -19,7 +19,7 @@ const CheckBox = ({ label, value, onChange }: CheckBoxProps) => {
                         <Text>
                             <strong>{label}</strong>
                         </Text>
-                        <Checkbox value="ok" onChange={onChange}>OK</Checkbox>
+                        <Checkbox onChange={onChange}>OK</Checkbox>
                     </Box>
                 </VStack>
             </Box>

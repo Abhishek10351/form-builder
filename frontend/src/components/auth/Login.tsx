@@ -1,9 +1,18 @@
 "use client";
 import { useState } from "react";
 import api from "@/config/api";
-import { Container, Box, Button, Input, Text, Heading, Link } from "@chakra-ui/react";
-
+import {
+    Container,
+    Box,
+    Button,
+    Input,
+    Text,
+    Heading,
+    Link,
+} from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 const Login = () => {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -22,9 +31,17 @@ const Login = () => {
             });
 
             setSuccess(true);
-        } catch (error: any) {
-            console.log(error);
-            setError(error.response?.data.message || "Something went wrong");
+            router.push("/");
+        } catch (error) {
+            // setError((error as any).response?.data.message || "Something went wrong");
+            if (error && typeof error === "object" && "response" in error) {
+                setError(
+                    (error as any).response.data.message ||
+                        "Something went wrong"
+                );
+            } else {
+                setError("Something went wrong");
+            }
         } finally {
             setLoading(false);
         }
@@ -76,7 +93,7 @@ const Login = () => {
                     )}
                 </form>
                 <Text mt={4}>
-                    Don't have an account?{" "}
+                    Don&apos;t have an account?{" "}
                     <Link color="teal.500" href="/auth/register">
                         Register
                     </Link>

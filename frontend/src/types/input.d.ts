@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface TextInputProps {
     label: string;
     placeholder: string;
@@ -23,7 +25,7 @@ export interface DropDownProps {
     placeholder: string;
     value: string;
     options: string[];
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange: React.ChangeEventHandler<HTMLSelectElement>;
 }
 export interface RadioButtonProps {
     label: string;

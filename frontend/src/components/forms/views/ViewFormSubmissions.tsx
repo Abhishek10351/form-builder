@@ -33,8 +33,10 @@ const ViewFormSubmissions = ({ formId }: ViewFormSubmissionsProps) => {
                 const response = await api.get(
                     "/forms/" + formId + "/submissions"
                 );
-                console.log(response.data);
                 setFormSubmissions(response.data);
+                if (formSubmissions.length > 0) {
+                    setLoading(false);
+                }
             } catch {
                 setError("Error fetching form Submissions");
             } finally {
@@ -63,7 +65,7 @@ const ViewFormSubmissions = ({ formId }: ViewFormSubmissionsProps) => {
                 duration: 5000,
                 isClosable: true,
             });
-        } catch (error) {
+        } catch {
             toast({
                 title: "Download failed.",
                 description: "There was an error downloading the CSV file.",

@@ -53,6 +53,8 @@ const createForms = async (req: Request, res: Response) => {
                 INSERT INTO form_fields (form_id, label, type, required, order_index, options)
                 VALUES ($1, $2, $3, $4, $5, $6)
             `;
+            console.log(field.options, JSON.stringify(field.options));
+            
             const fieldValues = [
                 formId,
                 field.label,

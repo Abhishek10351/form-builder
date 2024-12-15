@@ -21,11 +21,16 @@ const register = async (req: Request, res: Response) => {
     }
 
     try {
+        console.log("Hashing password");
+        
         const hashedPassword = await password_hash(password);
+        console.log("Inserting user into database");
         await connection.query(
             `INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`,
             [name, email, hashedPassword]
         );
+        console.log("User registered successfully");
+        
         return res
             .status(201)
             .json({ message: "User registered successfully" });

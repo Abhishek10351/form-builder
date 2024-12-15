@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS form_fields (
     type VARCHAR(255) NOT NULL,
     required BOOLEAN DEFAULT FALSE,
     order_index INT,
-    options JSON
+    options TEXT
 );
 
 CREATE TABLE IF NOT EXISTS form_submissions (

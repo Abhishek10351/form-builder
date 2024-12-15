@@ -15,7 +15,7 @@ router.post("", (req: Request, res: Response) => {
 });
 
 // Endpoint to submit a form
-router.put("/:formId", (req: Request, res: Response) => {
+router.post("/:formId", (req: Request, res: Response) => {
     submitForm(req, res);
 });
 

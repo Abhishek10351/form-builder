@@ -15,6 +15,14 @@ import get_user from "./middleware/jwtauth";
 
 app.use(express.json());
 app.use(cors());
+// cors should allow all domains
+
+// app.use(
+//     cors({
+//         origin: "http://127.0.0.1:3000",
+//         credentials: true,
+//     })  
+// )
 app.use(cookieParser());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -32,6 +40,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     //     console.log("Response timed out");
     //     res.end();
     // });
+    // print url and method
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+
+    // continue to the next middleware or route handler
     next();
 });
 

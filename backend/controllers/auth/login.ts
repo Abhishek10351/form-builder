@@ -35,7 +35,9 @@ const login = async (req: Request, res: Response) => {
         expiresIn: "30d",
     });
 
-    res.cookie("token", token);
+    res.cookie("token", token, {
+        maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+    });
     return res.status(200).json({ message: "User logged in successfully" });
 };
 

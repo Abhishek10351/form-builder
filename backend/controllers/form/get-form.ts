@@ -24,6 +24,7 @@ const getForm = async (req: Request, res: Response) => {
             SELECT * FROM form_fields WHERE form_id = $1 ORDER BY order_index
         `;
         const fieldsResult = await connection.query(fieldsQuery, [formId]);
+        console.log(fieldsResult.rows[0], "lol", fieldsResult.rows[0].options);
 
         const form = formResult.rows[0];
 

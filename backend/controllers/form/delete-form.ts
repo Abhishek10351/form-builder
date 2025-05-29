@@ -16,7 +16,7 @@ const deleteForm = async (req: Request, res: Response) => {
             return res.status(404).send("Form not found");
         }
 
-        return res.status(200).send("Form deleted successfully");
+        return res.status(200).send("");
     } catch (error) {
         return res.status(500).json({ message: "Error deleting form" });
     }
